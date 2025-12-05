@@ -24,6 +24,44 @@ Files added
 - `ExcelQueryEngine.py` — top-level re-export for backward compatibility
 - `requirements.txt` — runtime dependency list
 
+**About**
+
+The Excel Query Engine is a small, dependency-light utility for programmatically
+loading and querying Excel-style data. It provides a simple API to:
+
+- Load spreadsheet data (from a filename or in-memory structures).
+- Read single cells and rectangular ranges.
+- Find cells by value and fetch adjacent cells.
+- Extract header-based tables as lists of dictionaries.
+- Select specific columns by Excel column letter.
+
+It intentionally exposes both low-level primitives (cell/range access) and
+higher-level helpers (table extraction, column selection) so you can use it for
+quick automation tasks as well as in larger data pipelines.
+
+**Why it's useful**
+
+- Fast prototyping: quickly script small data extraction tasks without setting up
+	a heavyweight Excel-processing pipeline.
+- Reproducible extraction: encode extraction rules in code so you can re-run and
+	version-control them alongside other project code.
+- Lightweight integration: use it inside ETL jobs, test harnesses, or small CLI
+	utilities where bringing in the full `openpyxl` workbook model is unnecessary.
+- Safe defaults: helpers return plain Python lists and dictionaries making the
+	output easy to inspect, test, and serialize.
+
+**Where to use it**
+
+- Data analysis and reporting: extract specific ranges or tables from shared
+	spreadsheets for downstream analysis.
+- Finance and operations: pull monthly figures, reconciliations, or small reports
+	into scripts or scheduled tasks.
+- QA and testing: verify spreadsheet-based test fixtures or validate exported
+	reports.
+- Prototyping and automation: build small utilities that transform spreadsheet
+	data into CSV, JSON or feed into other systems.
+
+
 Usage Examples
 
 Below are a few quick examples showing how to use `ExcelQueryEngine`. These examples assume
